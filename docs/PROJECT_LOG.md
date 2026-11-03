@@ -22,3 +22,16 @@
   - Retention teams now capture ~75.7% of all churning accounts (up from 57.2%), preserving recurring revenue by triggering proactive retention outreach.
 - **Open Blockers / Points for Doubt-Clearing**:
   - SVM training runtime is noticeably higher due to quadratic scaling; evaluate whether hyperparameter search or gradient boosting offers a better speed-to-recall trade-off.
+
+## Day 3: Hyperparameter Tuning & Bias-Variance Diagnosis
+- **Changes Added**:
+  - Implemented 5-fold cross-validation grid search (\src/pipelines/train_day3_tuning.py\).
+  - Tuned hyperparameter spaces for Logistic Regression, Random Forest, and SVM.
+  - Diagnosed variance: default Random Forest showed a 12% train-validation gap; restricting depth to 6 reduced the gap to 3.5% without sacrificing recall.
+  - Locked and saved tuned champion to \models/churn_v3.joblib\.
+  - Added notebook \
+otebooks/day03_tuning_bias_variance.ipynb\.
+- **Business Value Added**:
+  - The model generalises stably to unseen cohorts, preventing performance decay once deployed to live retail batches.
+- **Open Blockers / Points for Doubt-Clearing**:
+  - Model relies strictly on raw features without interaction terms (e.g. tenure vs charges ratio).

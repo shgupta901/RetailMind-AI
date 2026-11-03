@@ -2,20 +2,32 @@ import os
 import joblib
 import pandas as pd
 
-CHAMPION_MODEL_PATH = os.path.join("models", "churn_champion_v2.joblib")
-BASELINE_MODEL_PATH = os.path.join("models", "churn_pipeline_v1.joblib")
+DAY4_PATH = os.path.join("models", "churn_production_v4.joblib")
+DAY3_PATH = os.path.join("models", "churn_v3.joblib")
+DAY2_PATH = os.path.join("models", "churn_champion_v2.joblib")
+DAY1_PATH = os.path.join("models", "churn_pipeline_v1.joblib")
 
 class ChurnPredictorService:
     def __init__(self, model_path: str = None):
         if model_path is None:
-            model_path = CHAMPION_MODEL_PATH if os.path.exists(CHAMPION_MODEL_PATH) else BASELINE_MODEL_PATH
+            for candidate in [DAY4_PATH, DAY3_PATH, DAY2_PATH, DAY1_PATH]:
+                if os.path.exists(candidate):
+                    model_path = candidate
+                    break
 
-        if not os.path.exists(model_path):
-            raise FileNotFoundError(f"Model not found at {model_path}.")
+        if not model_path or not os.path.exists(model_path):
+            raise FileNotFoundError("No trained model artefact found.")
 
         self.model_path = model_path
         self.pipeline = joblib.load(model_path)
-        self.version = "Day 2 Champion (Random Forest)" if "v2" in model_path else "Day 1 Baseline (Logistic Regression)"
+        if "v4" in model_path:
+            self.version = "Day 4 Final Production Model (Engineered + Ensembles)"
+        elif "v3" in model_path:
+            self.version = "Day 3 Tuned Champion (Random Forest)"
+        elif "v2" in model_path:
+            self.version = "Day 2 Champion (Random Forest)"
+        else:
+            self.version = "Day 1 Baseline (Logistic Regression)"
 
     def predict(self, records: pd.DataFrame) -> pd.DataFrame:
         preds = self.pipeline.predict(records)
