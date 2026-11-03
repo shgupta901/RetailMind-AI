@@ -35,3 +35,15 @@ otebooks/day03_tuning_bias_variance.ipynb\.
   - The model generalises stably to unseen cohorts, preventing performance decay once deployed to live retail batches.
 - **Open Blockers / Points for Doubt-Clearing**:
   - Model relies strictly on raw features without interaction terms (e.g. tenure vs charges ratio).
+
+## Day 4: Feature Engineering, PCA & XGBoost Ensembles
+- **Changes Added**:
+  - Implemented \DomainFeatureEngineer\ in \src/pipelines/train_day4_final.py\.
+  - Added PCA dimensionality reduction and compared Bagging (Random Forest) vs. Boosting (XGBoost).
+  - Selected XGBoost with \scale_pos_weight\ as the final Phase 1 Production Model and saved to \models/churn_production_v4.joblib\.
+  - Updated \src/service.py\ to auto-serve the Day 4 production model.
+  - Added Day 4 notebook and updated the Phase 1 benchmark table in \README.md\.
+- **Business Value Added**:
+  - Reached **80.5% Churn Recall** and **0.8612 ROC-AUC**. Four out of five churning retail accounts are caught ahead of contract expiration, minimizing lost MRR.
+- **Open Blockers / Points for Doubt-Clearing**:
+  - Phase 1 complete. Ready for Phase 2: Deep Learning baseline (Keras ANN benchmark).
