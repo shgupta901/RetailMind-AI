@@ -23,3 +23,10 @@ RetailMind AI is an enterprise-grade retail intelligence platform developed incr
      - High-cardinality entity embeddings (e.g., millions of customer IDs or SKU categories).
      - Multi-modal retail data (e.g., fusing tabular transactional history with product images or customer support audio/text transcripts).
      - Massive streaming datasets ($> 10^7$ rows) where continuous online gradient descent out-scales tree memory caches.
+
+---
+## ?? Phase 2: Computer Vision & Catalog Intelligence
+
+| Day | Vision Module | Target Architecture | Accuracy | Primary Business Value | Status |
+| :---: | :--- | :--- | :---: | :--- | :--- |
+| **06** | Product Auto-Tagger | Sequential CNN (Conv2D + MaxPool + Dropout) | ~0.90 | Automates manual catalog data entry via image classification | **V1 Shipped** |

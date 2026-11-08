@@ -60,3 +60,14 @@ otebooks/day03_tuning_bias_variance.ipynb\.
   - Proved empirically that while the ANN captures high recall (~78.3%), XGBoost remains the optimal production engine for tabular churn. This prevents over-engineering and keeps inference costs low while setting up the architecture for future multi-modal features.
 - **Open Blockers / Points for Doubt-Clearing**:
   - Neural networks require careful feature scaling and struggle with mixed tabular types compared to tree-based splitters.
+
+## Day 6: CNN Image Classification (Retail Vision Module)
+- **Changes Added**:
+  - Added computer vision capabilities to RetailMind AI via src/pipelines/train_day6_cnn.py.
+  - Built a 2-block CNN architecture with spatial data augmentation.
+  - Evaluated classification bottlenecks using a confusion matrix (diagnosed Shirt vs. Coat confusion).
+  - Created src/vision_service.py exposing the auto-tagging mechanism.
+- **Business Value Added**:
+  - Drastically cuts operational friction in inventory onboarding by auto-classifying product uploads with ~90% accuracy.
+- **Open Blockers / Points for Doubt-Clearing**:
+  - The model requires images to be rigidly resized to 28x28 grayscale. We need to upgrade to RGB transfer learning for high-res catalog processing.
