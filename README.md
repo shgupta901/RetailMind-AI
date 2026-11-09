@@ -1,32 +1,39 @@
-# RetailMind AI
+# RetailMind AI — Enterprise Retail Intelligence Platform
 
-RetailMind AI is an enterprise-grade retail intelligence platform developed incrementally across 35 production milestones.
-
-## Phase 2: Deep Learning Progression & Model Benchmarking
-
-| Day / Milestone | Model Architecture | Accuracy | Recall (Churn=1) | Precision (Churn=1) | ROC-AUC | Status |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Day 1** | Baseline Logistic Regression | 0.8053 | 0.5722 | 0.6544 | 0.8361 | Deprecated |
-| **Day 2** | Decision Tree / Random Forest / SVM | 0.7854 | 0.7567 | 0.5739 | 0.8491 | Evaluated |
-| **Day 3** | Tuned Random Forest (5-Fold CV) | 0.7925 | 0.7701 | 0.5842 | 0.8498 | Audited |
-| **Day 4** | **Domain Features + Ensembles (XGBoost)** | **0.8010** | **0.8048** | **0.5960** | **0.8612** | **Production Champion** |
-| **Day 5** | Deep ANN (Keras 3-Layer + BatchNorm + Dropout) | 0.7583 | 0.7834 | 0.5288 | 0.8415 | DL Benchmark |
-
-### Honest Diagnostic: When to Use Which?
-1. **Classical Ensembles (XGBoost / Random Forest) — The Clear Winner on Tabular Data**:
-   - **Why XGBoost Remains Production Champion**: On medium-sized tabular retail records (~7,000 rows), gradient boosted decision trees naturally handle mixed feature distributions, discrete boundaries, and non-linear interactions without requiring heavy parameter search or architectural tuning. XGBoost delivered higher ROC-AUC (**0.8612** vs. **0.8415**) and significantly better precision with zero risk of gradient vanishing.
-   - **Operational Footprint**: Near-instant inference latency, minimal memory usage, and no native GPU runtime dependency.
-
-2. **Deep Learning (Keras Feed-Forward ANN) — When Depth Actually Adds Value**:
-   - **Observations on Tabular Telco**: The deep ANN learned meaningful decision surfaces and high churn recall (**0.7834**), but required aggressive regularization (Dropout, BatchNormalization, EarlyStopping) to prevent overfitting tabular noise.
-   - **When to Deploy Neural Nets in RetailMind AI**:
-     - High-cardinality entity embeddings (e.g., millions of customer IDs or SKU categories).
-     - Multi-modal retail data (e.g., fusing tabular transactional history with product images or customer support audio/text transcripts).
-     - Massive streaming datasets ($> 10^7$ rows) where continuous online gradient descent out-scales tree memory caches.
+RetailMind AI is an end-to-end retail intelligence platform developed incrementally across 35 production milestones. It unifies predictive churn analytics, deep learning propensity scoring, computer vision image classification, object detection, background segmentation, and explainable AI.
 
 ---
-## ?? Phase 2: Computer Vision & Catalog Intelligence
 
-| Day | Vision Module | Target Architecture | Accuracy | Primary Business Value | Status |
+## ??? Phase 1 & Phase 2 Master Milestone Ledger
+
+### Part A: Phase 1 — Classical ML & Deep Churn Engine (Days 01–05)
+| Day | Focus / Architecture | Accuracy | Recall (Churn=1) | Precision (Churn=1) | ROC-AUC | Status |
+| :---: | :--- | :---: | :---: | :---: | :---: | :--- |
+| **01** | Baseline Logistic Regression Pipeline | 0.8053 | 0.5722 | 0.6544 | 0.8361 | Deprecated |
+| **02** | Decision Tree / Random Forest / SVM | 0.7854 | 0.7567 | 0.5739 | 0.8491 | Evaluated |
+| **03** | Tuned Random Forest (5-Fold CV) | 0.7925 | 0.7701 | 0.5842 | 0.8498 | Audited |
+| **04** | Feature Eng + XGBoost Ensemble | **0.8010** | **0.8048** | **0.5960** | **0.8612** | **Production Champion** |
+| **05** | Deep ANN (Keras + BatchNorm + Dropout) | 0.7583 | 0.7834 | 0.5288 | 0.8415 | DL Benchmark |
+
+### Part B: Phase 2 — Computer Vision & Catalog Intelligence (Days 06–08)
+| Day | Vision Module | Target Architecture | Accuracy / Score | Primary Business Value | Status |
 | :---: | :--- | :--- | :---: | :--- | :--- |
-| **06** | Product Auto-Tagger | Sequential CNN (Conv2D + MaxPool + Dropout) | ~0.90 | Automates manual catalog data entry via image classification | **V1 Shipped** |
+| **06** | Product Auto-Tagger | Sequential CNN (Conv2D + MaxPool) | ~0.90 | Automates manual catalog data entry | **V1 Shipped** |
+| **07** | Transfer Learning & Detection | MobileNetV2 Backbone + YOLOv8 | ~0.94 | High-res RGB classification & multi-item QA | **Shipped** |
+| **08** | Packaged CV Module | OpenCV GrabCut + CNN + Grad-CAM | ~0.90 | End-to-end background removal & explainable AI | **Phase 2 Complete** |
+
+---
+
+## ? Quick Start & Service Execution
+
+`ash
+# Clone and setup
+git clone [https://github.com/shgupta901/RetailMind-AI.git](https://github.com/shgupta901/RetailMind-AI.git)
+cd RetailMind-AI
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+
+# Run tabular inference or vision checks
+python src/service.py
+python src/vision_service.py
