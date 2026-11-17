@@ -35,12 +35,13 @@ RetailMind AI is an end-to-end retail intelligence platform developed incrementa
 |---|---|---|---|---|---|
 | **11** | Rare-Category Image Augmentation | Convolutional VAE | Improve class balance and catalog fairness | Per-class accuracy lift + quality review | **Integrated** |
 
-### Part E: Phase 5 - Text Intelligence (Days 12-13)
+### Part E: Phase 5 - Text Intelligence & Assistant Apps (Days 12-14)
 
 | Day | Module | Architecture | Business Goal | Evaluation | Status |
 |---|---|---|---|---|---|
 | **12** | Review Sentiment Baseline | NLTK + TF-IDF + Logistic Regression | Convert reviews into customer-mood and product-issue signals | Accuracy / Precision / Recall / F1 / ROC-AUC | **Integrated** |
 | **13** | Contextual Sentiment & Ticket Routing | DistilBERT sequence classifiers | Improve sentiment accuracy and automate support routing | Accuracy / Macro-F1 / Per-class Precision-Recall | **Integrated** |
+| **14** | Review Summaries & Support Assistant | Hugging Face summarizer + grounded LLM API client | Reduce review-reading and support-response workload | Faithfulness / Grounded-answer rate / Escalation / Latency | **Integrated** |
 
 ## Quick Start & Service Execution
 
