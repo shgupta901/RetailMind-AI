@@ -29,6 +29,12 @@ RetailMind AI is an end-to-end retail intelligence platform developed incrementa
 | **09** | Single-Step Demand Forecasting | LSTM (64 units) | Next day | MAE / RMSE | **Integrated** |
 | **10** | Multi-Horizon Demand Forecasting | Seq2Seq LSTM + Attention | Next 14 days | MAE / RMSE / MAPE | **Integrated** |
 
+### Part D: Phase 4 - Generative Catalog Augmentation (Day 11)
+
+| Day | Module | Architecture | Business Goal | Evaluation | Status |
+|---|---|---|---|---|---|
+| **11** | Rare-Category Image Augmentation | Convolutional VAE | Improve class balance and catalog fairness | Per-class accuracy lift + quality review | **Integrated** |
+
 ## Quick Start & Service Execution
 
 ```bash
