@@ -1,4 +1,4 @@
-# RetailMind AI � Enterprise Retail Intelligence Platform
+# RetailMind AI - Enterprise Retail Intelligence Platform
 
 RetailMind AI is an end-to-end retail intelligence platform developed incrementally across 35 production milestones. It unifies predictive churn analytics, deep learning propensity scoring, computer vision image classification, object detection, background segmentation, and explainable AI.
 
@@ -6,7 +6,7 @@ RetailMind AI is an end-to-end retail intelligence platform developed incrementa
 
 ## ??? Phase 1 & Phase 2 Master Milestone Ledger
 
-### Part A: Phase 1 � Classical ML & Deep Churn Engine (Days 01�05)
+### Part A: Phase 1 - Classical ML & Deep Churn Engine (Days 01-05)
 | Day | Focus / Architecture | Accuracy | Recall (Churn=1) | Precision (Churn=1) | ROC-AUC | Status |
 | :---: | :--- | :---: | :---: | :---: | :---: | :--- |
 | **01** | Baseline Logistic Regression Pipeline | 0.8053 | 0.5722 | 0.6544 | 0.8361 | Deprecated |
@@ -15,7 +15,7 @@ RetailMind AI is an end-to-end retail intelligence platform developed incrementa
 | **04** | Feature Eng + XGBoost Ensemble | **0.8010** | **0.8048** | **0.5960** | **0.8612** | **Production Champion** |
 | **05** | Deep ANN (Keras + BatchNorm + Dropout) | 0.7583 | 0.7834 | 0.5288 | 0.8415 | DL Benchmark |
 
-### Part B: Phase 2 � Computer Vision & Catalog Intelligence (Days 06�08)
+### Part B: Phase 2 - Computer Vision & Catalog Intelligence (Days 06-08)
 | Day | Vision Module | Target Architecture | Accuracy / Score | Primary Business Value | Status |
 | :---: | :--- | :--- | :---: | :--- | :--- |
 | **06** | Product Auto-Tagger | Sequential CNN (Conv2D + MaxPool) | ~0.90 | Automates manual catalog data entry | **V1 Shipped** |
@@ -39,9 +39,13 @@ python src/service.py
 python src/vision_service.py
 
 ### Day 9: RNN / LSTM Demand Forecasting
-- Added a pandas time-series pipeline for Rossmann daily sales.
-- Created 30-day look-back windows with a latest-42-day chronological test holdout.
-- Added a TensorFlow/Keras LSTM forecaster evaluated with MAE and RMSE.
-- Added model/result persistence for downstream inventory planning.
-- See [`docs/day09_demand_forecasting.md`](docs/day09_demand_forecasting.md) and [`notebooks/day09_lstm_demand_forecasting.ipynb`](notebooks/day09_lstm_demand_forecasting.ipynb).
+- **Objective:** Forecast store/product sales to support inventory planning and reduce stockouts/overstock.
+- **Data preparation:** pandas date parsing, daily resampling, chronological holdout of the latest 42 days, and train-only min-max scaling.
+- **Sequence framing:** 30-day look-back windows -> next-day demand target.
+- **Model:** TensorFlow/Keras LSTM (64 units) with a Dense prediction head.
+- **Evaluation:** MAE and RMSE in original sales units, plus actual-vs-predicted output for sanity checking.
+- **Persistence:** training saves `models/demand_lstm_v9.keras` and `models/day09_forecast_results.csv` when the pipeline is executed successfully.
+- **Source:** [`src/day09_lstm_demand_forecasting.py`](src/day09_lstm_demand_forecasting.py)
+- **Notebook:** [`notebooks/day09_lstm_demand_forecasting.ipynb`](notebooks/day09_lstm_demand_forecasting.ipynb)
+- **Documentation:** [`docs/day09_demand_forecasting.md`](docs/day09_demand_forecasting.md)
 
