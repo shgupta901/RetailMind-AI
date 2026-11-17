@@ -22,10 +22,12 @@ RetailMind AI is an end-to-end retail intelligence platform developed incrementa
 | **07** | Transfer Learning & Detection | MobileNetV2 Backbone + YOLOv8 | ~0.94 | High-resolution RGB classification & multi-item QA | **Shipped** |
 | **08** | Packaged CV Module | OpenCV GrabCut + CNN + Grad-CAM | ~0.90 | Background removal & explainable AI | **Phase 2 Complete** |
 
-### Day 9: RNN / LSTM Demand Forecasting
-- Built an LSTM demand forecaster using 30-day sales windows to predict next-day demand.
-- Used chronological holdout with train-only scaling and evaluated with MAE/RMSE.
-- Integrated the demand-forecasting module for downstream inventory planning.
+### Part C: Phase 3 - Sequence Forecasting (Days 09-10)
+
+| Day | Forecasting Module | Architecture | Horizon | Evaluation | Status |
+|---|---|---|---|---|---|
+| **09** | Single-Step Demand Forecasting | LSTM (64 units) | Next day | MAE / RMSE | **Integrated** |
+| **10** | Multi-Horizon Demand Forecasting | Seq2Seq LSTM + Attention | Next 14 days | MAE / RMSE / MAPE | **Integrated** |
 
 ## Quick Start & Service Execution
 
