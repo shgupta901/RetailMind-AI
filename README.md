@@ -43,11 +43,12 @@ RetailMind AI is an end-to-end retail intelligence platform developed incrementa
 | **13** | Contextual Sentiment & Ticket Routing | DistilBERT sequence classifiers | Improve sentiment accuracy and automate support routing | Accuracy / Macro-F1 / Per-class Precision-Recall | **Integrated** |
 | **14** | Review Summaries & Support Assistant | Hugging Face summarizer + grounded LLM API client | Reduce review-reading and support-response workload | Faithfulness / Grounded-answer rate / Escalation / Latency | **Integrated** |
 
-### Part F: Phase 6 - Generative Marketing (Day 15)
+### Part F: Phase 6 - Generative Marketing (Days 15-16)
 
 | Day | Module | Architecture | Business Goal | Controls | Status |
 |---|---|---|---|---|---|
 | **15** | On-Brand Marketing Imagery | Stable Diffusion v1.5 via diffusers | Generate reusable campaign concepts from product metadata | Prompt templates / Negative prompts / Fixed seeds / Human approval | **Integrated** |
+| **16** | Product Variations & Promo Frames | Stable Diffusion img2img + curated frame interpolation | Scale campaign assets while retaining product identity | Strength / Guidance / Seeds / Asset curation | **Integrated** |
 
 ## Quick Start & Service Execution
 
